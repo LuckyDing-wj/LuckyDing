@@ -26,18 +26,23 @@ public class Drawing extends Thread {
 
     @Override
     public void run() {
-        if (account.money - drawingMoney < 0) {
+        if (account.money < 0) {
             return;
         }
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        synchronized (account) {
+            if (account.money - drawingMoney < 0) {
+                return;
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            account.money -= drawingMoney;
+            packetTotal += drawingMoney;
+            System.out.println(this.getName() + "-->账户余额为:" + account.money);
+            System.out.println(this.getName() + "-->口袋的钱为:" + packetTotal);
         }
-        account.money -= drawingMoney;
-        packetTotal += drawingMoney;
-        System.out.println(this.getName() + "-->账户余额为:" + account.money);
-        System.out.println(this.getName() + "-->口袋的钱为:" + packetTotal);
     }
 
 }
