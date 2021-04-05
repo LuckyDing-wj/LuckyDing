@@ -1,10 +1,12 @@
-package com.wj.ding.multithread;
+package com.wj.ding.multithread.syn;
+
+import com.wj.ding.multithread.Web12306;
 
 /**
  * @Date 2021/4/3 20:40
  * @Author: wj
  */
-public class Web12306 implements Runnable {
+public class UnSafeWeb12306 implements Runnable {
 
     private int ticketNums = 10;
     private boolean flag = true;
@@ -16,8 +18,9 @@ public class Web12306 implements Runnable {
         }
     }
 
-    private void test() {
-        if (ticketNums < 0) {
+    private synchronized void test() {
+        if (ticketNums <= 0) {
+            flag = false;
             return;
         }
         try {
