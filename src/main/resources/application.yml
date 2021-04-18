@@ -1,1 +1,6 @@
 
+# mongo config
+spring:
+  data:
+    mongodb:
+      uri: mongodb://lucky:lucky@localhost:27017/customer
