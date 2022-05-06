@@ -1,7 +1,6 @@
 package com.wj.ding.mongo.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @Date 2021/4/18 17:17
