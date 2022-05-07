@@ -26,9 +26,9 @@ public class CreatStreams {
         Stream<String> words = Stream.of("gently", "down", "the", "stream");
         words.forEach(System.out::println);
         words.forEachOrdered(System.out::println);
-        Stream<Stream<String>> letterStream = words.map(w -> letters(w));
+        Stream<Stream<String>> letterStream = words.map(CreatStreams::letters);
         letterStream.forEach(System.out::println);
-        Stream<String> flatMapStream = words.flatMap(w -> letters(w));
+        Stream<String> flatMapStream = words.flatMap(CreatStreams::letters);
         flatMapStream.forEach(System.out::println);
         Stream<Locale> locales = Arrays.stream(Locale.getAvailableLocales());
         Map<String, List<Locale>> countryToLocales = locales.collect(Collectors.groupingBy(Locale::getCountry));
