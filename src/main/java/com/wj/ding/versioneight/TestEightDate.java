@@ -3,6 +3,10 @@ package com.wj.ding.versioneight;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import java.awt.*;
+import java.text.NumberFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -11,6 +15,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjuster;
 import java.util.Date;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * @date 2022/5/8 11:12
@@ -21,12 +26,15 @@ public class TestEightDate {
     private static final Logger logger = LoggerFactory.getLogger(TestEightDate.class);
 
     public static void main(String[] args) {
-//        testLocalDate();
-//        testTemporalAdjuster();
-//        testLocalTime();
-//        testTimeZoneId();
-//        testDateTimeFormatter();
+        testNumberFormat();
+    }
 
+    private static void testNumberFormat() {
+        Locale aDefault = Locale.getDefault();
+        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance(aDefault);
+        String format = currencyInstance.format(13948);
+        logger.info("format {}", format);
+        logger.info("currency code {}", currencyInstance.getCurrency().getCurrencyCode());
     }
 
     private static void testDateTimeFormatter() {
