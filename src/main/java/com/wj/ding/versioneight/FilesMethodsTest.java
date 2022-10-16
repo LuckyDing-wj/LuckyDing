@@ -18,7 +18,7 @@ public class FilesMethodsTest {
         long startTime = System.currentTimeMillis();
         try (DirectoryStream<Path> paths = Files.newDirectoryStream(path, "*.{zip,7z}")){
             for (Path filePath : paths) {
-
+                System.out.println(filePath.toString());
             }
 
         } catch (IOException e) {
